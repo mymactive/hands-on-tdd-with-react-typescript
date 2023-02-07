@@ -19,6 +19,8 @@
 flowchart RL
 d((none)) -- attach with hoge--> a((hoge))
 a((hoge)) -- detach --> d((none))
+d((none)) -- detach --> d((none))
+
   subgraph detached
     d((none))
   end
