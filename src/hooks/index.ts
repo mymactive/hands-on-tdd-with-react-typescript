@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useState } from "react";
+import { useReducer } from "react";
 
 type DetachedBadge = {
   mode: "detached";
