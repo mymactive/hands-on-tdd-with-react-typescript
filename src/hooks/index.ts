@@ -1,18 +1,18 @@
 import { useCallback, useReducer, useState } from "react";
 
-type DetachedTag = {
+type DetachedBadge = {
   mode: "detached";
 };
 
-type AttachedTag = {
+type AttachedBadge = {
   mode: "attached";
   name: string;
 };
 
-type Tag = DetachedTag | AttachedTag;
+type Badge = DetachedBadge | AttachedBadge;
 
-type UseTag = () => {
-  tag: Tag;
+type UseBadge = () => {
+  badge: Badge;
   attach: (name: string) => void;
   detach: () => void;
 };
@@ -20,9 +20,9 @@ type UseTag = () => {
 type AttachAction = { type: "attach"; name: string };
 type DetachAction = { type: "detach" };
 type Action = AttachAction | DetachAction;
-type AttachInReducer = (name: string) => AttachedTag;
-type DetachInReducer = () => DetachedTag;
-type Reducer = (tag: Tag, action: Action) => Tag;
+type AttachInReducer = (name: string) => AttachedBadge;
+type DetachInReducer = () => DetachedBadge;
+type Reducer = (badge: Badge, action: Action) => Badge;
 
 const attachInReducer: AttachInReducer = (name) => ({ mode: "attached", name });
 const detachInReducer: DetachInReducer = () => ({ mode: "detached" });
@@ -37,12 +37,12 @@ const reducer: Reducer = (_, action) => {
   }
 };
 
-export const useTag: UseTag = () => {
-  const [tag, dispatch] = useReducer(reducer, { mode: "detached" });
+export const useBadge: UseBadge = () => {
+  const [badge, dispatch] = useReducer(reducer, { mode: "detached" });
 
   const attach = (name: string) => dispatch({ type: "attach", name });
 
   const detach = () => dispatch({ type: "detach" });
 
-  return { tag, attach, detach };
+  return { badge, attach, detach };
 };

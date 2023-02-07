@@ -1,10 +1,10 @@
 import { expect, test } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { useTag } from ".";
+import { useBadge } from ".";
 
 test("attachを呼ぶと、attachedに変化する", () => {
   // 準備(arrange)
-  const { result } = renderHook(() => useTag());
+  const { result } = renderHook(() => useBadge());
 
   // 実行(act)
   act(() => {
@@ -12,7 +12,7 @@ test("attachを呼ぶと、attachedに変化する", () => {
   });
 
   // 検証(assert)
-  expect(result.current.tag).toStrictEqual({
+  expect(result.current.badge).toStrictEqual({
     mode: "attached",
     name: "hoge",
   });
@@ -20,7 +20,7 @@ test("attachを呼ぶと、attachedに変化する", () => {
 
 test("最後にdetachを呼ぶと、detachedに変化する", () => {
   // 準備(arrange)
-  const { result } = renderHook(() => useTag());
+  const { result } = renderHook(() => useBadge());
   act(() => {
     result.current.attach("hoge");
   });
@@ -31,7 +31,7 @@ test("最後にdetachを呼ぶと、detachedに変化する", () => {
   });
 
   // 検証(assert)
-  expect(result.current.tag).toStrictEqual({
+  expect(result.current.badge).toStrictEqual({
     mode: "detached",
   });
 });
