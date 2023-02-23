@@ -13,7 +13,7 @@ test("称号なしの時に、外すと、称号はなしのままである", ()
 
   // 検証(assert)
   expect(result.current.title).toStrictEqual({
-    mode: "striped",
+    mode: "stripped",
   });
 });
 
@@ -47,6 +47,6 @@ test("称号ありの時から、称号を外すと称号はなしとなる", ()
 
   // 検証(assert)
   expect(result.current.title).toStrictEqual({
-    mode: "striped",
+    mode: "stripped",
   });
 });

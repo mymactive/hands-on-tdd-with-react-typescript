@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 
-type StripedTitle = {
-  mode: "striped";
+type StrippedTitle = {
+  mode: "stripped";
 };
 
 type AdoptedTitle = {
@@ -9,7 +9,7 @@ type AdoptedTitle = {
   text: string;
 };
 
-type Title = AdoptedTitle | StripedTitle;
+type Title = AdoptedTitle | StrippedTitle;
 
 type UseTitle = () => {
   title: Title;
@@ -21,27 +21,27 @@ type AdoptAction = { type: "adopt"; text: string };
 type StripAction = { type: "strip" };
 type Action = AdoptAction | StripAction;
 type AdoptInReducer = (text: string) => AdoptedTitle;
-type StripInReducer = () => StripedTitle;
+type StripInReducer = () => StrippedTitle;
 type Reducer = (title: Title, action: Action) => Title;
 
-const attachInReducer: AdoptInReducer = (text) => ({
+const adoptInReducer: AdoptInReducer = (text) => ({
   mode: "adopted",
   text,
 });
-const detachInReducer: StripInReducer = () => ({ mode: "striped" });
+const stripInReducer: StripInReducer = () => ({ mode: "stripped" });
 const reducer: Reducer = (_, action) => {
   switch (action.type) {
     case "adopt":
-      return attachInReducer(action.text);
+      return adoptInReducer(action.text);
     case "strip":
-      return detachInReducer();
+      return stripInReducer();
     default:
       throw new Error("invalid action");
   }
 };
 
 export const useTitle: UseTitle = () => {
-  const [title, dispatch] = useReducer(reducer, { mode: "striped" });
+  const [title, dispatch] = useReducer(reducer, { mode: "stripped" });
 
   const attach = (text: string) => dispatch({ type: "adopt", text });
 
