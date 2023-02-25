@@ -1,6 +1,6 @@
 import { test, expect } from "vitest";
 import { act, renderHook } from "@testing-library/react";
-import { useTitle } from ".";
+import { useTitle } from "./useTitle";
 
 test("称号なしの時に、称号を外すと、称号はなしのままである", () => {
   const { result } = renderHook(() => useTitle());
