@@ -15,5 +15,10 @@ type UseTitle = () => {
   strip: () => void;
 };
 
-// TODO: stripを実装する
-// export const useTitle: UseTitle = () => {};
+// TODO: `称号なし→付ける→称号あり`のテストを使って`付ける`操作を実装してください。
+export const useTitle: UseTitle = () => {
+  const title = { mode: "stripped" } as const;
+  const strip = () => {};
+
+  return { title, strip };
+};
