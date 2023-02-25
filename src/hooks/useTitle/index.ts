@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type StrippedTitle = {
   mode: "stripped";
 };
@@ -15,10 +17,13 @@ type UseTitle = () => {
   strip: () => void;
 };
 
-// TODO: `称号なし→付ける→称号あり`のテストを使って`付ける`操作を実装してください。
 export const useTitle: UseTitle = () => {
-  const title = { mode: "stripped" } as const;
+  const [title, setTitle] = useState<Title>({ mode: "stripped" });
+  // TODO: 一息で実装しましょう
   const strip = () => {};
+  const adopt = (text: string) => {
+    setTitle({ mode: "adopted", text });
+  };
 
-  return { title, strip };
+  return { title, strip, adopt };
 };
