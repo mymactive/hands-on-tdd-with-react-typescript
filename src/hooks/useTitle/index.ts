@@ -43,9 +43,9 @@ const reducer: Reducer = (_, action) => {
 export const useTitle: UseTitle = () => {
   const [title, dispatch] = useReducer(reducer, { mode: "stripped" });
 
-  const attach = (text: string) => dispatch({ type: "adopt", text });
+  const adopt = (text: string) => dispatch({ type: "adopt", text });
 
-  const detach = () => dispatch({ type: "strip" });
+  const strip = () => dispatch({ type: "strip" });
 
-  return { title: title, adopt: attach, strip: detach };
+  return { title, adopt, strip };
 };
