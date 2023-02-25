@@ -1,5 +1,3 @@
-import { useReducer } from "react";
-
 type StrippedTitle = {
   mode: "stripped";
 };
@@ -17,35 +15,5 @@ type UseTitle = () => {
   strip: () => void;
 };
 
-type AdoptAction = { type: "adopt"; text: string };
-type StripAction = { type: "strip" };
-type Action = AdoptAction | StripAction;
-type AdoptInReducer = (text: string) => AdoptedTitle;
-type StripInReducer = () => StrippedTitle;
-type Reducer = (title: Title, action: Action) => Title;
-
-const adoptInReducer: AdoptInReducer = (text) => ({
-  mode: "adopted",
-  text,
-});
-const stripInReducer: StripInReducer = () => ({ mode: "stripped" });
-const reducer: Reducer = (_, action) => {
-  switch (action.type) {
-    case "adopt":
-      return adoptInReducer(action.text);
-    case "strip":
-      return stripInReducer();
-    default:
-      throw new Error("invalid action");
-  }
-};
-
-export const useTitle: UseTitle = () => {
-  const [title, dispatch] = useReducer(reducer, { mode: "stripped" });
-
-  const adopt = (text: string) => dispatch({ type: "adopt", text });
-
-  const strip = () => dispatch({ type: "strip" });
-
-  return { title, adopt, strip };
-};
+// TODO: stripを実装する
+export const useTitle: UseTitle = () => {};
