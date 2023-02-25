@@ -16,4 +16,4 @@ type UseTitle = () => {
 };
 
 // TODO: stripを実装する
-export const useTitle: UseTitle = () => {};
+// export const useTitle: UseTitle = () => {};
