@@ -17,10 +17,14 @@ type UseTitle = () => {
   strip: () => void;
 };
 
+// TODO: useReducerの`reducer`を型で表現しましょう
+
 export const useTitle: UseTitle = () => {
+  // TODO: useReducerを使って、リファクタリングしましょう
   const [title, setTitle] = useState<Title>({ mode: "stripped" });
-  // TODO: 一息で実装しましょう
-  const strip = () => {};
+  const strip = () => {
+    setTitle({ mode: "stripped" });
+  };
   const adopt = (text: string) => {
     setTitle({ mode: "adopted", text });
   };
