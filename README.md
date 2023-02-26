@@ -1,7 +1,9 @@
 # React TypeScriptテスト駆動開発ハンズオン
 
 React TypeScriptテスト駆動開発ハンズオンのためのレポジトリです
-詳細はZennの記事を参照してください
+詳細は以下の記事を参照してください
+
+https://zenn.dev/sum0/articles/07535a9cdd4a62
 
 ## ハンズオンの構成
 
