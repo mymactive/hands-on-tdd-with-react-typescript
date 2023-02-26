@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 
 type StrippedTitle = {
   mode: "stripped";
@@ -17,16 +17,35 @@ type UseTitle = () => {
   strip: () => void;
 };
 
-// TODO: useReducerの`reducer`を型で表現しましょう
+type AdoptAction = { type: "adopt"; text: string };
+type StripAction = { type: "strip" };
+type Action = AdoptAction | StripAction;
+
+type Adopt = (text: string) => AdoptedTitle;
+type Strip = () => StrippedTitle;
+type Reducer = (title: Title, action: Action) => Title;
+
+const adopt: Adopt = (text) => ({ mode: "adopted", text } as const);
+const strip: Strip = () => ({ mode: "stripped" } as const);
+const reducer: Reducer = (_, action) => {
+  switch (action.type) {
+    case "adopt":
+      return adopt(action.text);
+    case "strip":
+      return strip();
+    default:
+      throw Error("Unexpected action type: ${action.type}");
+  }
+};
 
 export const useTitle: UseTitle = () => {
-  // TODO: useReducerを使って、リファクタリングしましょう
-  const [title, setTitle] = useState<Title>({ mode: "stripped" });
+  const [title, dispatch] = useReducer(reducer, { mode: "stripped" });
+
   const strip = () => {
-    setTitle({ mode: "stripped" });
+    dispatch({ type: "strip" });
   };
   const adopt = (text: string) => {
-    setTitle({ mode: "adopted", text });
+    dispatch({ type: "adopt", text });
   };
 
   return { title, strip, adopt };
