@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
   },
   "scripts": {
     "dev": "vite",
@@ -34,6 +34,6 @@
     "prettier": "2.8.3",
     "typescript": "^4.9.3",
     "vite": "^7.3.7",
-    "vitest": "^3.2.6"
+    "vitest": "^4.1.12"
   }
 }
